@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/person/home/home",
+    "pages/home-page/home/home"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

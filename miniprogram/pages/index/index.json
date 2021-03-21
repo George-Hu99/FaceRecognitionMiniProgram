@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "home-page": "../home-page/home/home",
+    "person-page": "../person/home/home"
+  }
+}

@@ -1,0 +1,95 @@
+/* pages/medicine-box/home/home.wxss */
+page {
+    width: 100vw;
+    overflow: hidden;
+}
+
+.home-page-top {
+    width: 100%;
+    background-color: #fff;
+    border-bottom-left-radius: 40rpx;
+    border-bottom-right-radius: 40rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.home-page-top-text{
+    /* line-height: normal; */
+    width: 100%;
+    font-size: 45rpx;
+    font-family: "时尚中黑简体", sans-serif;
+    text-align: center;
+}
+
+.LoginPrompt {
+    text-align: center;
+    margin-top: 50%;
+    transform: translate(0, -50%);
+    width: 100%;
+    border-radius: 35rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.LoginPrompt_title {
+    font-size: 45rpx;
+}
+
+.LoginPrompt_content {
+    font-size: 25rpx;
+}
+
+.medicines {
+    /*border: 1px solid red;*/
+    width: 710rpx;
+    margin-left: 20rpx;
+    margin-top: 40rpx;
+}
+
+.medicine-card {
+    border-radius: 20rpx;
+}
+
+.medicine-card-content {
+    font-size: 30rpx;
+    font-weight: lighter;
+    display: flex;
+    flex-direction: column;
+}
+
+.medicine-card-title {
+    font-size: 40rpx;
+    font-weight: bold;
+}
+.pop-class{
+    background: white;
+    height: 50vh;
+}
+/*.case-custom-class {*/
+/*    position: fixed;*/
+/*    margin-top: 50vh;*/
+/*    border-radius: 50rpx;*/
+/*    padding-bottom: 250rpx;*/
+/*    width: 750rpx;*/
+/*    background: #ffffff;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+.add-medicine-btn {
+    margin-left: 50%;
+    margin-top: 50rpx;
+    transform: translate(-50%, 0);
+}
+
+/*.lin-enter-active-class,*/
+/*.lin-leave-active-class {*/
+/*    top: 0;*/
+/*}*/
+
+/*.lin-enter-class,*/
+/*.lin-leave-to-class {*/
+/*    top: 100%;*/
+/*}*/

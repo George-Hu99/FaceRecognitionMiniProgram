@@ -1,0 +1,22 @@
+<!-- <wxs module='timeTool' src='../../../utils/time.wxs'></wxs> -->
+<!--pages/medicine-box/home/home.wxml-->
+<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{true}}"
+             bindrefresherrefresh='openOrCloseAddMedicinePage' style="height: 100vh"
+             refresher-triggered="{{hasRefresherTriggered}}">
+
+  <view class="home-page-top" style="height:{{CustomBar}}px" wx:if="{{!show}}">
+    <text class="home-page-top-text" style="line-height:{{CustomBar/2}}px">
+      表情识别
+    </text>
+  </view>
+
+  <view wx:if="{{!logged}}" class="LoginPrompt">
+    <text class="LoginPrompt_title">请先登录</text>
+    <text class="LoginPrompt_title">Login First</text>
+    <text class="LoginPrompt_content">不登录的话,怎么知道我有多好玩呢🎈</text>
+  </view>
+
+  <view wx:if="{{logged}}" class="CameraContext">
+<button bindtap="startRecord">开始录像</button>
+  </view>
+</scroll-view>
