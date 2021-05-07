@@ -1,18 +1,36 @@
-// miniprogram/pages/index/index.js
+// pages/home-page/result/result.js
+const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    CustomBar: app.globalData.CustomBar,
+    StatusBar: app.globalData.StatusBar,
+    logged: app.globalData.logged,
+    userInfo: app.globalData.userInfo,
+    current_image_url: "",
+    detectResult: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('result', data => {
+      this.setData({
+        detectResult: data.data.face_list[0]
+      })
+    })
+    eventChannel.on('img', data => {
+      console.log(data.data)
+      this.setData({
+        current_image_url: data.data
+      })
+    })
 
+    console.log(this.data.detectResult);
   },
 
   /**

@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/person/home/home",
-    "pages/home-page/home/home"
+    "pages/person-page/home/home",
+    "pages/home-page/home/home",
+    "pages/home-page/result/result"
   ],
   "window": {
     "navigationStyle": "custom"

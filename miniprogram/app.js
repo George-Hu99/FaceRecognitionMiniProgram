@@ -23,10 +23,10 @@ App({
     StatusBar: null,
     CustomBar: null,
     ColorList: [{
-      title: '嫣红',
-      name: 'red',
-      color: '#e54d42'
-    },
+        title: '嫣红',
+        name: 'red',
+        color: '#e54d42'
+      },
       {
         title: '桔橙',
         name: 'orange',
@@ -100,6 +100,6 @@ App({
     ],
     //userInfo 里有用户基本信息和 openid
     userInfo: null,
-    logged: false,
+    logged: false
   }
 })

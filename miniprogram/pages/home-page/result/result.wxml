@@ -1,0 +1,25 @@
+<!-- pages/home-page/result/result.wxml -->
+<scroll-view scroll-y enable-back-to-top="{{true}}" style="height: 100vh">
+    <view class="home-page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
+        <text class="home-page-top-text">识别结果</text>
+    </view>
+    <view class="image-view">
+        <image src="{{current_image_url}}" mode="widthFix" alt="" class="cards-img" />
+    </view>
+    <view class="cards">
+        <view class="swz-circle">
+            <l-circle outer-diameter='150' inner-diameter='100' percent='{{detectResult.beauty}}'></l-circle>
+        </view>
+        <text>您的美丑得分：{{detectResult.beauty}}</text>
+    </view>
+    <view class="cards">
+        <text>预估年龄：{{detectResult.age}}</text>
+        <text>性别：{{detectResult.gender.type=="male"?"男孩纸":"女孩纸"}}</text>
+        <text>情绪：{{detectResult.emotion.type}}</text>
+        <text>表情：{{detectResult.expression.type}}</text>
+        <text>眼镜：{{detectResult.glasses.type}}</text>
+        <text>左眼状态：{{detectResult.eye_status.left_eye==1?"睁":"闭"}}</text>
+        <text>右眼状态：{{detectResult.eye_status.right_eye==1?"睁":"闭"}}</text>
+        <text>脸型：{{detectResult.face_shape.type}}</text>
+    </view>
+</scroll-view>

@@ -6,7 +6,6 @@
   "dependencies": {
     "lin-ui": "^0.9.4"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

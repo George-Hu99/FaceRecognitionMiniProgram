@@ -3,7 +3,7 @@ const cloud = require('wx-server-sdk')
 cloud.init({
   // API 调用都保持和云函数当前所在环境一致
   // env: cloud.DYNAMIC_CURRENT_ENV
-  env: 'family-medicine-box-5cuuf824ec9b'
+  env: 'cloud-environment-01-3bgd91f9ed3'
 })
 const db = cloud.database()
 const userDatabase = db.collection('user')
@@ -61,7 +61,6 @@ exports.main = async (event, context) => {
   function updateUser(user) {
 
   }
-
   switch (event.flag) {
     case "login":
       return login()

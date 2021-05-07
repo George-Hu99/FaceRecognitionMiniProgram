@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "l-circle": "../../../miniprogram_npm/lin-ui/circle"
+  }
+}
