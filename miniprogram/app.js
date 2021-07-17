@@ -5,7 +5,7 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
-        env: 'cloud-environment-01-3bgd91f9ed3',
+        env: 'wechatcloud-0g0j7gt09d1fd61a',
         traceUser: true //是否将用户访问记录到用户管理中，在控制台可见
       })
     }

@@ -1,3 +1,4 @@
+@import 'home-wxa-auto-dark.wxss';
 /* pages/medicine-box/home/home.wxss */
 page {
     width: 100vw;
@@ -17,7 +18,7 @@ page {
     /* line-height: normal; */
     width: 100%;
     font-size: 45rpx;
-    font-family: "时尚中黑简体", sans-serif;
+    font-family: FZYS, sans-serif;
     text-align: center;
 }
 
@@ -37,4 +38,20 @@ page {
 
 .LoginPrompt_content {
     font-size: 25rpx;
+}
+
+.uploadImg {
+    text-align: center;
+    margin-top: 50%;
+    transform: translate(0, -50%);
+}
+
+.recognise-history {
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    font-family: FZYS, serif;
+    position: fixed;
+    bottom: 200rpx;
+    font-size: 25rpx;
+    line-height: 23rpx;
 }

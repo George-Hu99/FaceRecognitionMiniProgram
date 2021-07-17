@@ -1,7 +1,9 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
-/* @font-face {
-    font-family: '时尚中黑简体';
-    src: url('https://myblog-figure-bed-1258528016.file.myqcloud.com/%E5%AD%97%E4%BD%93/%E6%97%B6%E5%B0%9A%E4%B8%AD%E9%BB%91%E7%AE%80%E4%BD%93.ttf');
-} */
+@font-face {
+    font-family: 'FZYS';
+    src: url('https://myblog-figure-bed-1258528016.file.myqcloud.com/%E5%AD%97%E4%BD%93/FZPingXYSJW.TTF');
+}
+
+@import 'app-wxa-auto-dark.wxss';

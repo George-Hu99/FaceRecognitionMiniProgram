@@ -1,0 +1,24 @@
+/* pages/person-page/account/account.wxss */
+page {
+    width: 100vw;
+    overflow: hidden;
+}
+
+.home-page-top {
+    width: 100%;
+    background-color: #fff;
+    border-bottom-left-radius: 40rpx;
+    border-bottom-right-radius: 40rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.home-page-top-text {
+    /* line-height: normal; */
+    width: 100%;
+    font-size: 45rpx;
+    font-family: "时尚中黑简体", sans-serif;
+    text-align: center;
+}
+
+@import 'account-wxa-auto-dark.wxss'

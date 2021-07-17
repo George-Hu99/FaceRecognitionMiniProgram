@@ -53,6 +53,62 @@ Component({
     }
   },
   methods: {
+    async onGetUserProfile() {
+      const res = await promisic(wx.getUserProfile)({
+        desc: "为了使用服务，请您登陆"
+      })
+      const userInfo = res.userInfo
+      /* -------------------
+      * console.log(userInfo)
+      * avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/GPLUa1IFLd6uGLX7YNvXhTOGY2XI4bva39yK2d8x5I6yvS2ichoH5YCfE2ibwMvwBC2e99Qc6t2oJicicZknv7NUBA/132"
+      * city: "Hefei"
+      * country: "China"
+      * gender: 1
+      * language: "en"
+      * nickName: "￼"
+      * province: "Anhui"
+      ------------------- */
+      let user = new User()
+      user.avatarUrl = userInfo.avatarUrl
+      user.city = userInfo.city
+      user.country = userInfo.country
+      user.gender = userInfo.gender
+      user.language = userInfo.language
+      user.nickName = userInfo.nickName
+      user.province = userInfo.province
+      /* -------------------
+      * 还缺少以下信息：
+      * _id
+      * _openid
+      * vipBeginTime
+      * vipEndTime
+      -------------------*/
+      const response = await wx.cloud.callFunction({
+        name: 'user',
+        data: {
+          flag: 'select',
+          user: user
+        }
+      })
+      const userInfoDetail = response.result
+      user._id = userInfoDetail._id
+      user._openid = userInfoDetail._openid
+      user.vipBeginTime = userInfoDetail.vipBeginTime
+      user.vipEndTime = userInfoDetail.vipEndTime
+
+      /*---------------------------------
+      * 结合 observes，写入 global data
+      ----------------------------------*/
+      this.setData({
+        logged: true,
+        userInfo: user
+      })
+
+      /* -------------------
+      * 写入本地缓存
+      ----------------------*/
+      wx.setStorageSync("userInfo", user)
+    },
     refresh() {
       console.log("下拉刷新")
       //在这里请求数据啥的,最后把 hasRefresh 变成 false
@@ -60,7 +116,6 @@ Component({
         hasRefresh: false
       })
     },
-
     async getOpenid() {
       // 调用云函数，获取用户 openID
       const openidRequestResult = await wx.cloud.callFunction({
@@ -71,62 +126,47 @@ Component({
       })
       return openidRequestResult.result.openid
     },
+    accountSetting() {
+      wx.navigateTo({
+        url: '/pages/person-page/account/account',
+        success: res => {
+          // 通过eventChannel向被打开页面传送数据
+          //   res.eventChannel.emit('result', {
+          //     data: this.data.detectResult.result
+          //   })
+          //   res.eventChannel.emit('img', {
+          //     data: this.data.img
+          //   })
+          // }
+        }
+      })
+    },
+    privacyAgreement() {
 
-    accountSetting() {},
-    privacyAgreement() {},
-    switchTheme() {},
-    newVersionUpdate() {},
-    appreciateSupport() {},
-    /**
-     * 点击获取用户信息，包括头像、用户昵称、地区等信息，但是不包括 openID (弹窗请求用户确认)
-     * 这一步不需要请求云函数
-     */
-    onGetUserProfile: async function () {
-      // =======================================================获取用户信息=======================================================
-      const userProfile = await promisic(wx.getUserProfile)({
-        desc: "仅用于小程序内的展示，不作他用"
-      })
-      const userInfo = userProfile.userInfo
-      this.setData({
-        userInfo
-      })
-      // =======================================================获取OpenID=======================================================
-      userInfo._openid = await this.getOpenid()
-      // =======================================================注册用户========= ==============================================
-      const user = new User(userInfo)
-      // console.log("===============")
-      // console.log(user)
-      // console.log("===============")
-      //  调用云函数，注册用户,无论注册的时候用户存不存在，都会返回用户信息
-      const addResult = await UserDao.addUser(user)
-      // console.log("==============")
-      // console.log(addResult)
-      // console.log("==============")
-      // =======================================================setData=======================================================
-      this.setData({
-        logged: true,
-        userInfo: addResult
-      })
+    },
+    newVersionUpdate() {
+    },
+    appreciateSupport() {
     }
   },
   lifetimes: {
     async attached() {
       //如果全局有信息,直接同步过来
       if (app.globalData.logged && app.globalData.userInfo) {
-        console.log("全局有信息,同步过来");
+        console.log("全局有信息,同步过来")
         this.setData({
           userInfo: app.globalData.userInfo,
           logged: app.globalData.logged
         })
       } else {
-        console.log("从本地缓存读取信息");
+        // console.log("从本地缓存读取信息")
         const res = wx.getStorageInfoSync()
-        console.log("查看本地是否存在userInfo的缓存", res.keys.indexOf('userInfo') == 0);
-        if (res.keys.indexOf('userInfo') != -1) {
+        console.log("查看本地是否存在userInfo的缓存", res.keys.indexOf('userInfo') === 0)
+        if (res.keys.indexOf('userInfo') !== -1) {
           const userInfo = await promisic(wx.getStorage)({
             key: 'userInfo'
           })
-          console.log("获取到userInfo", userInfo)
+          // console.log("获取到userInfo", userInfo)
           this.setData({
             logged: true,
             userInfo: userInfo.data

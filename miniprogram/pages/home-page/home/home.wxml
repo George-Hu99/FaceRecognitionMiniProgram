@@ -1,22 +1,32 @@
 <!-- <wxs module='timeTool' src='../../../utils/time.wxs'></wxs> -->
-<!-- pages/medicine-box/home/home.wxml -->
-<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{true}}" style="height: 100vh" refresher-triggered="{{hasRefresherTriggered}}">
-  <view class="home-page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
+    <!-- pages/medicine-box/home/home.wxml -->
+<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{true}}" style="height: 100vh">
+  <view class="home-page-top" style="padding-top:{{StatusBar + 5}}px; height: {{CustomBar}}px">
     <text class="home-page-top-text">表情识别</text>
   </view>
-  <view wx:if="{{!logged}}" class="LoginPrompt">
-    <text class="LoginPrompt_title">请先登录</text>
-    <text class="LoginPrompt_title">Login First</text>
-    <text class="LoginPrompt_content">不登录的话,怎么知道我有多好玩呢🎈</text>
-  </view>
-  <view wx:if="{{logged}}" class="uploadImg" style="padding-top: {{CustomBar}}px;">
-    <l-image-picker bind:linchange="onChangeTap" size="1" count="1">
-      <!-- <image src="https://z3.ax1x.com/2021/05/05/gMQNiF.png" /> -->
-      <text>点击上传</text>
-    </l-image-picker>
-    <l-button loading="{{uploading}}" disabled="{{uploading}}" size="long" wx:if="{{showBtn}}" bind:lintap="uploadImg">
-      开始识别
-    </l-button>
+
+
+  <van-transition show="{{ !logged }}" name="fade-up" duration="1000">
+    <view bind:tap="onGetUserProfile" class="LoginPrompt">
+      <text class="LoginPrompt_title">请先登录</text>
+      <text class="LoginPrompt_title">Login First</text>
+      <text class="LoginPrompt_content">不登录的话,怎么知道我有多好玩呢🎈</text>
+    </view>
+  </van-transition>
+
+  <!--上传图片控件-->
+  <van-transition show="{{ logged }}" custom-class="uploadImg" custom-style="padding-top: {{CustomBar}}px;"
+                  name="fade"
+                  duration="1000">
+    <van-uploader preview-size="200rpx" max-count="1" class="uploader" upload-text="点击上传图片" upload-icon="add-o"
+                 bind:after-read="afterRead"/>
+  </van-transition>
+
+  <view class="recognise-history">
+    识别历史
+    <van-icon name="arrow" size="23rpx"/>
   </view>
 </scroll-view>
-<l-toast show="{{isFail}}" icon="error" title="失败，请重试" />
+
+
+<l-toast show="{{isFail}}" icon="error" title="失败，请重试"/>

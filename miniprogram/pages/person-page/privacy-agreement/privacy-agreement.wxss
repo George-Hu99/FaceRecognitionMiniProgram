@@ -1,0 +1,2 @@
+/* pages/person-page/privacy-agreement/privacy-agreement.wxss */
+@import 'privacy-agreement-wxa-auto-dark.wxss'

@@ -2,12 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/person-page/home/home",
+    "pages/person-page/account/account",
+    "pages/person-page/privacy-agreement/privacy-agreement",
+    "pages/person-page/appreciate-support/appreciate-support",
     "pages/home-page/home/home",
     "pages/home-page/result/result"
   ],
   "window": {
     "navigationStyle": "custom"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }

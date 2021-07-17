@@ -1,10 +1,9 @@
 // pages/medicine-box/home/home.js
-import {
-  promisic
-} from "../../../miniprogram_npm/lin-ui/utils/util"
+import {promisic} from "../../../miniprogram_npm/lin-ui/utils/util"
+import {User} from "../../../model/user"
 
-const app = getApp();
-var image = "";
+const app = getApp()
+let image = ""
 Component({
   /**
    * 页面的初始数据
@@ -12,13 +11,14 @@ Component({
   data: {
     CustomBar: app.globalData.CustomBar,
     StatusBar: app.globalData.StatusBar,
+    // 是否登陆
     logged: app.globalData.logged,
+    // 用户信息
     userInfo: app.globalData.userInfo,
-    hasRefresherTriggered: false,
-    showBtn: false,
-    uploading: false,
-    img: "",
-    detectResult: null
+    // 识别结果
+    detectResult: null,
+    // 调用接口是否失败
+    isFail: false
   },
   observers: {
     'logged': (logged) => {
@@ -29,92 +29,129 @@ Component({
     }
   },
   methods: {
-    async getOpenid() {
-      // 调用云函数，获取用户 openID
-      const openidRequestResult = await wx.cloud.callFunction({
+    async onGetUserProfile() {
+      const res = await promisic(wx.getUserProfile)({
+        desc: "为了使用服务，请您登陆"
+      })
+      const userInfo = res.userInfo
+      /* -------------------
+      * console.log(userInfo)
+      * avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/GPLUa1IFLd6uGLX7YNvXhTOGY2XI4bva39yK2d8x5I6yvS2ichoH5YCfE2ibwMvwBC2e99Qc6t2oJicicZknv7NUBA/132"
+      * city: "Hefei"
+      * country: "China"
+      * gender: 1
+      * language: "en"
+      * nickName: "￼"
+      * province: "Anhui"
+      ------------------- */
+      let user = new User()
+      user.avatarUrl = userInfo.avatarUrl
+      user.city = userInfo.city
+      user.country = userInfo.country
+      user.gender = userInfo.gender
+      user.language = userInfo.language
+      user.nickName = userInfo.nickName
+      user.province = userInfo.province
+      /* -------------------
+      * 还缺少以下信息：
+      * _id
+      * _openid
+      * vipBeginTime
+      * vipEndTime
+      -------------------*/
+      const response = await wx.cloud.callFunction({
         name: 'user',
         data: {
-          flag: 'login'
+          flag: 'select',
+          user: user
         }
       })
-      return openidRequestResult.result.openid
-    },
+      const userInfoDetail = response.result
+      user._id = userInfoDetail._id
+      user._openid = userInfoDetail._openid
+      user.vipBeginTime = userInfoDetail.vipBeginTime
+      user.vipEndTime = userInfoDetail.vipEndTime
 
+      /*---------------------------------
+      * 结合 observes，写入 global data
+      ----------------------------------*/
+      this.setData({
+        logged: true,
+        userInfo: user
+      })
+      /* -------------------
+      * 写入本地缓存
+      ----------------------*/
+      wx.setStorageSync("userInfo", user)
+    },
     // 图片选择后触发此事件
-    async onChangeTap(event) {
-      // 用户选择图片之后,显示上传按钮
-      this.setData({
-        showBtn: true
+    async afterRead(event) {
+      wx.showLoading({
+        title: '加载中'
+      })
+      let {file} = event.detail
+      /* -----------------------
+      * 上传到云开发存储中,获取 file ID
+      -----------------------*/
+      const upload_res = await promisic(wx.cloud.uploadFile)({
+        cloudPath: `${this.data.userInfo._openid}-${new Date().getTime()}.png`,
+        filePath: file.url
       })
 
-      var img = event.detail.current[0]
-      this.setData({
-        img
-      })
-      console.log("==========压缩前============");
-      console.log(img)
-      console.log("======================");
+      const fileID = upload_res.fileID
 
-      // 压缩图片, 提高性能
-      // 注意,这里不压缩的话,会引起超时
-      img = await promisic(wx.compressImage)({
-        src: img, // 图片路径
-        quality: 25 // 压缩质量
-      })
-
-      console.log("==========压缩后============");
-      console.log(img.tempFilePath)
-      console.log("======================");
-      // 把图片转为 BASE64 编码
-      const FSM = wx.getFileSystemManager();
-      image = await promisic(FSM.readFile)({
-        filePath: img.tempFilePath,
-        encoding: "base64",
-      })
-    },
-
-
-    // 点击上传按钮后触发此事件
-    async uploadImg() {
-      // 禁用按钮、设置为加载状态
-      this.setData({
-        uploading: true
-      })
-
-      // 调用人脸识别接口，上传 BASE64 字符串。
-      // 为了防止 BASE64 太大导致超时，这里使用 CDN 
-      const result = await promisic(wx.cloud.callFunction)({
-        name: 'face',
+      /* -----------------------
+      * 将当前的 fileID 和 openID 保存到数据库中,方便用户查看历史记录
+      -----------------------*/
+      const addImageResult = await promisic(wx.cloud.callFunction)({
+        name: 'image',
         data: {
-          image: wx.cloud.CDN(image.data)
+          flag: "add",
+          fileId: fileID
         }
       })
 
-      // 获得结果之后，无论正确与否，都要让按钮恢复可点击状态
-      this.setData({
-        uploading: false,
-        detectResult: JSON.parse(result.result)
+      /* ---------------------------------
+      * 根据 FIle ID进行人脸检测分析
+      ---------------------------------*/
+      const recognise_result = await promisic(wx.cloud.callFunction)({
+        name: 'face-tencent',
+        data: {
+          image: fileID
+        }
       })
+      console.log("=========pages/medicine-box/home/home.js detectResult=========")
+      console.log(recognise_result)
+      console.log("========================")
 
-      if (this.data.detectResult.error_code == 0) {
+      // 获得结果之后，无论正确与否，都要停止加载状态
+      wx.hideLoading()
+
+      // wx.setStorageSync("recognise_result", recognise_result.result)
+
+      if (recognise_result.errMsg === "cloud.callFunction:ok") {
         // 如果获取到正确结果，跳转到结果页面
-        wx.navigateTo({
+        console.log("======pages/medicine-box/home/home.js result==================")
+        console.log(recognise_result.result)
+        console.log("========================")
+        promisic(wx.navigateTo({
           url: '/pages/home-page/result/result',
-          success: res => {
+          success: await function (res) {
             // 通过eventChannel向被打开页面传送数据
             res.eventChannel.emit('result', {
-              data: this.data.detectResult.result
+              data: recognise_result.result
             })
             res.eventChannel.emit('img', {
-              data: this.data.img
+              data: file.url
             })
           }
-        })
+        }))
       } else {
         // 否则，显示失败的提示
         this.setData({
           isFail: true
         })
+        wx.showToast(recognise_result.errMsg)
       }
     }
   },
@@ -123,20 +160,20 @@ Component({
     async attached() {
       //如果全局有信息,直接同步过来
       if (app.globalData.logged && app.globalData.userInfo) {
-        console.log("全局有信息,同步过来");
+        console.log("pages/medicine-box/home/home.js 全局有信息,同步过来")
         this.setData({
           userInfo: app.globalData.userInfo,
           logged: app.globalData.logged
         })
       } else {
-        console.log("从本地缓存读取信息");
+        // console.log("从本地缓存读取信息")
         const res = wx.getStorageInfoSync()
-        console.log("查看本地是否存在userInfo的缓存", res.keys.indexOf('userInfo') == 0);
-        if (res.keys.indexOf('userInfo') != -1) {
+        // console.log("查看本地是否存在userInfo的缓存", res.keys.indexOf('userInfo') === 0)
+        if (res.keys.indexOf('userInfo') !== -1) {
           const userInfo = await promisic(wx.getStorage)({
             key: 'userInfo'
           })
-          console.log("获取到userInfo", userInfo)
+          // console.log("获取到userInfo:", userInfo)
           this.setData({
             logged: true,
             userInfo: userInfo.data

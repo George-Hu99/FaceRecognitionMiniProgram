@@ -1,7 +1,6 @@
 /* pages/person/home/home.wxss */
 @import "../../../colorui/icon.wxss";
 @import "../../../colorui/main.wxss";
-@import '../../../style/weather.min.wxss';
 
 .UCenter-bg {
     /* background-image: url(https://cdn.nlark.com/yuque/0/2019/jpeg/280373/1552028807382-assets/web-upload/27c0aad7-f2b0-4ed4-a1f2-fa640463dd85.jpeg); */
@@ -46,6 +45,7 @@ page {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    font-family: FZYS, serif;
 }
 
 .userinfo,
@@ -169,3 +169,5 @@ page {
     font-size: 25rpx;
     float: right;
 }
+
+@import 'home-wxa-auto-dark.wxss'

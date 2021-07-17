@@ -17,7 +17,7 @@ page {
     /* line-height: normal; */
     width: 100%;
     font-size: 45rpx;
-    font-family: sans-serif;
+    font-family: FZYS, serif;
     text-align: center;
 }
 
@@ -28,6 +28,7 @@ page {
 }
 
 .cards {
+    font-family: FZYS, serif;
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -46,7 +47,14 @@ page {
     width: 20%;
 }
 
+.cards-circle {
+    display: flex;
+    flex-direction: row;
+}
+
 .swz-circle {
     margin: auto;
     margin-bottom: 50rpx;
 }
+
+@import 'result-wxa-auto-dark.wxss'

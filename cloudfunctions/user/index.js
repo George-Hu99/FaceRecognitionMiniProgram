@@ -3,43 +3,37 @@ const cloud = require('wx-server-sdk')
 cloud.init({
   // API 调用都保持和云函数当前所在环境一致
   // env: cloud.DYNAMIC_CURRENT_ENV
-  env: 'cloud-environment-01-3bgd91f9ed3'
+  env: 'wechatcloud-0g0j7gt09d1fd61a'
 })
 const db = cloud.database()
-const userDatabase = db.collection('user')
+const userDatabase = db.collection('mini-program-user')
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-
-  function login() {
-    return {
-      event,
-      openid: wxContext.OPENID,
-      appid: wxContext.APPID,
-      unionid: wxContext.UNIONID,
-      env: wxContext.ENV
-    }
-  }
 
   async function selectAndAddUser(user) {
     //添加用户之前，先查询用户是否存在
     const selectResult = await userDatabase.where({
       _openid: wxContext.OPENID
     }).get()
-
+    // console.log("==============")
+    // console.log(user)
+    // console.log("==============")
     // 如果用户不存在
     if (selectResult.data.length === 0) {
+      // console.log("用户不存在")
       //添加用户
       const addResult = await userDatabase.add({
         data: {
           _openid: wxContext.OPENID,
-          avatarUrl: user.avatarUrl,
-          city: user.city,
-          country: user.country,
-          gender: user.gender,
-          language: user.language,
-          nickName: user.nickName,
-          province: user.province,
+          _unionid: wxContext.UNIONID,
+          avatarUrl: user._avatarUrl,
+          city: user._city,
+          country: user._country,
+          gender: user._gender,
+          language: user._language,
+          nickName: user._nickName,
+          province: user._province,
           vipBeginTime: new Date().getTime(),
           // 三天体验会员
           vipEndTime: new Date().getTime() + 1000 * 60 * 60 * 24 * 3
@@ -50,6 +44,25 @@ exports.main = async (event, context) => {
       return selectResult.data
     } else {
       //如果用户已经存在,直接返回用户信息
+      console.log("用户已存在")
+      return selectResult.data[0]
+    }
+  }
+
+  async function selectUser(openid) {
+    if (openid === "") {
+      openid = wxContext.OPENID
+    }
+    //添加用户之前，先查询用户是否存在
+    const selectResult = await userDatabase.where({
+      _openid: openid
+    }).get()
+
+    // 如果用户不存在
+    if (selectResult.data.length === 0) {
+      return "用户不存在"
+    } else {
+      console.log(selectResult.data[0])
       return selectResult.data[0]
     }
   }
@@ -61,16 +74,15 @@ exports.main = async (event, context) => {
   function updateUser(user) {
 
   }
+
   switch (event.flag) {
-    case "login":
-      return login()
-    case "add":
+    case "select":
       return selectAndAddUser(event.user)
+    case "login":
+      return selectUser(event.openid)
     case "delete":
       return deleteUser()
     case "update":
       return updateUser()
-    case "select":
-      return selectAndAddUser(event.user)
   }
 }

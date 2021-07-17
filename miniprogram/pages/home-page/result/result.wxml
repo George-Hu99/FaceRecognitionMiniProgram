@@ -1,25 +1,86 @@
 <!-- pages/home-page/result/result.wxml -->
 <scroll-view scroll-y enable-back-to-top="{{true}}" style="height: 100vh">
-    <view class="home-page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
-        <text class="home-page-top-text">识别结果</text>
+  <!-- 百度版本
+  <view class="home-page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
+      <text class="home-page-top-text">识别结果</text>
+  </view>
+  <view class="image-view">
+      <image src="{{current_image_url}}" mode="widthFix" alt="" class="cards-img" />
+  </view>
+  <view class="cards">
+      <view class="swz-circle">
+          <l-circle outer-diameter='150' inner-diameter='100' percent='{{detectResult.beauty}}'></l-circle>
+      </view>
+      <text>您的美丑得分：{{detectResult.beauty}}</text>
+  </view>
+  <view class="cards">
+      <text>预估年龄：{{detectResult.age}}</text>
+      <text>性别：{{detectResult.gender.type=="male"?"男孩纸":"女孩纸"}}</text>
+      <text>情绪：{{detectResult.emotion.type}}</text>
+      <text>表情：{{detectResult.expression.type}}</text>
+      <text>眼镜：{{detectResult.glasses.type}}</text>
+      <text>左眼状态：{{detectResult.eye_status.left_eye==1?"睁":"闭"}}</text>
+      <text>右眼状态：{{detectResult.eye_status.right_eye==1?"睁":"闭"}}</text>
+      <text>脸型：{{detectResult.face_shape.type}}</text>
+  </view>-->
+
+  <view class="home-page-top" style="padding-top:{{StatusBar + 5}}px;height: {{CustomBar}}px">
+    <text class="home-page-top-text">识别结果</text>
+  </view>
+  <view class="image-view">
+    <image src="{{current_image_url}}" mode="widthFix" alt="" class="cards-img"/>
+  </view>
+  <view class="cards cards-circle">
+
+    <view class="swz-circle">
+      <l-circle outer-diameter='150' inner-diameter='100'
+                percent='{{detectResult.FaceDetailAttributesInfo.Beauty}}'></l-circle>
+      <view style="margin-top: 20rpx">
+        <text>颜值：{{detectResult.FaceDetailAttributesInfo.Beauty}}</text>
+      </view>
     </view>
-    <view class="image-view">
-        <image src="{{current_image_url}}" mode="widthFix" alt="" class="cards-img" />
+
+    <view class="swz-circle">
+      <l-circle outer-diameter='150' inner-diameter='100'
+                percent='{{detectResult.FaceDetailAttributesInfo.Smile}}'></l-circle>
+      <view style="margin-top: 20rpx">
+        <text>微笑值：{{detectResult.FaceDetailAttributesInfo.Smile}}</text>
+      </view>
     </view>
-    <view class="cards">
-        <view class="swz-circle">
-            <l-circle outer-diameter='150' inner-diameter='100' percent='{{detectResult.beauty}}'></l-circle>
-        </view>
-        <text>您的美丑得分：{{detectResult.beauty}}</text>
-    </view>
-    <view class="cards">
-        <text>预估年龄：{{detectResult.age}}</text>
-        <text>性别：{{detectResult.gender.type=="male"?"男孩纸":"女孩纸"}}</text>
-        <text>情绪：{{detectResult.emotion.type}}</text>
-        <text>表情：{{detectResult.expression.type}}</text>
-        <text>眼镜：{{detectResult.glasses.type}}</text>
-        <text>左眼状态：{{detectResult.eye_status.left_eye==1?"睁":"闭"}}</text>
-        <text>右眼状态：{{detectResult.eye_status.right_eye==1?"睁":"闭"}}</text>
-        <text>脸型：{{detectResult.face_shape.type}}</text>
-    </view>
+
+  </view>
+
+  <view class="cards">
+    <text>预估年龄：{{detectResult.FaceDetailAttributesInfo.Age}}</text>
+    <text>性别：{{detectResult.FaceDetailAttributesInfo.Gender.Type === 0 ? "男性" : "女性"}}</text>
+    <text>情绪：{{emotionType[detectResult.FaceDetailAttributesInfo.Emotion.Type]}}</text>
+    <!--眼镜信息-->
+    <text>眼镜：{{glassType[detectResult.FaceDetailAttributesInfo.Eye.Glass.Type]}}</text>
+    <text>眼睛状态：{{detectResult.FaceDetailAttributesInfo.Eye.EyeOpen.Type === 0 ? "睁" : "闭"}}</text>
+    <text>双眼皮：{{detectResult.FaceDetailAttributesInfo.Eye.EyelidType.Type === 0 ? "无双眼皮" : "有双眼皮"}}</text>
+    <text>眼睛大小：{{eyeSize[detectResult.FaceDetailAttributesInfo.Eye.EyeSize.Type]}}</text>
+
+    <!--眉毛信息-->
+    <text>眉毛浓密程度：{{detectResult.FaceDetailAttributesInfo.Eyebrow.EyebrowDensity.Type === 0 ? "淡眉" : "浓眉"}}</text>
+    <text>眉毛弯曲：{{detectResult.FaceDetailAttributesInfo.Eyebrow.EyebrowCurve.Type === 0 ? "不弯" : "弯眉"}}</text>
+    <text>眉毛长短：{{detectResult.FaceDetailAttributesInfo.Eyebrow.EyebrowLength.Type === 0 ? "短眉毛" : "长眉毛"}}</text>
+
+    <!--头发信息-->
+    <text>头发长度：{{hairLength[detectResult.FaceDetailAttributesInfo.Hair.Length.Type]}}</text>
+    <text>刘海：{{detectResult.FaceDetailAttributesInfo.Hair.Bang.Type === 0 ? "无刘海" : "有刘海"}}</text>
+    <text>发色：{{hairColor[detectResult.FaceDetailAttributesInfo.Hair.Color.Type]}}</text>
+
+    <!--帽子信息-->
+    <text>帽子：{{hatStyle[detectResult.FaceDetailAttributesInfo.Hat.Style.Type]}}</text>
+    <text
+        show="{{detectResult.FaceDetailAttributesInfo.Hat.Style.Type!==0}}">帽子颜色：{{hatColor[detectResult.FaceDetailAttributesInfo.Hat.Color.Type]}}</text>
+
+    <text>口罩：{{detectResult.FaceDetailAttributesInfo.Mask.Type === 0 ? "不戴口罩" : "佩戴口罩"}}</text>
+    <text>胡须：{{detectResult.FaceDetailAttributesInfo.Moustache.Type === 0 ? "无胡须" : "有胡须"}}</text>
+    <text>嘴巴状态：{{detectResult.FaceDetailAttributesInfo.Mouth.MouthOpen.Type === 0 ? "不张嘴" : "张嘴"}}</text>
+    <text>脸型：{{faceShape[detectResult.FaceDetailAttributesInfo.Shape.Type]}}</text>
+    <text>肤色：{{skinType[detectResult.FaceDetailAttributesInfo.Skin.Type]}}</text>
+
+
+  </view>
 </scroll-view>

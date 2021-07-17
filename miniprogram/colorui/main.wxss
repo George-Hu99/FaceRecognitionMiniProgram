@@ -3939,3 +3939,5 @@ scroll-view.cu-steps .cu-item {
 .lines-white {
 	color: var(--white);
 }
+
+@import 'main-wxa-auto-dark.wxss'
