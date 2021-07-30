@@ -17,8 +17,25 @@ page {
     /* line-height: normal; */
     width: 100%;
     font-size: 45rpx;
-    font-family: "时尚中黑简体", sans-serif;
+    font-family: "FZYS", sans-serif;
     text-align: center;
+}
+
+.userinfo-avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background-size: cover;
+    background-color: white;
+    margin: 40rpx auto;
+}
+
+.userinfo-avatar[size] {
+    width: 100rpx;
+}
+
+.userinfo-avatar:after {
+    border: none;
 }
 
 @import 'account-wxa-auto-dark.wxss'

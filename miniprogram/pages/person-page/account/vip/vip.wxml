@@ -1,0 +1,11 @@
+<!--pages/person-page/account/vip/vip.wxml-->
+<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{false}}"
+             style="height: 100vh">
+  <view class="page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
+    <text class="page-top-text">VIP续费</text>
+  </view>
+  <view style="text-align: center;margin-top: 50rpx">
+    <text style="color: red;">页面施工中~</text>
+  </view>
+  <button bind:tap="backHome">返回首页</button>
+</scroll-view>

@@ -1,0 +1,17 @@
+/* pages/person-page/account/vip/vip.wxss */
+.page-top {
+    width: 100%;
+    background-color: #fff;
+    border-bottom-left-radius: 40rpx;
+    border-bottom-right-radius: 40rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.page-top-text {
+    /* line-height: normal; */
+    width: 100%;
+    font-size: 45rpx;
+    font-family: "FZYS", sans-serif;
+    text-align: center;
+}
