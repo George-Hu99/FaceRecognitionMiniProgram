@@ -67,12 +67,52 @@ exports.main = async (event, context) => {
     }
   }
 
-  function deleteUser() {
+  async function deleteUser() {
 
   }
+  /**
+   * 更新用户信息
+   * @param {JSON} user 
+   */
+  async function updateUser(user) {
+    console.log(user);
+    //更新用户之前，先查询用户是否存在
+    const selectResult = await userDatabase.where({
+      _openid: wxContext.OPENID
+    }).get()
 
-  function updateUser(user) {
-
+    // 如果用户不存在
+    if (selectResult.data.length === 0) {
+      return "用户不存在"
+    } else {
+      // console.log(selectResult.data[0])
+      try {
+        userDatabase.where({
+            _openid: wxContext.OPENID,
+          })
+          .update({
+            data: {
+              _openid: wxContext.OPENID,
+              _unionid: wxContext.UNIONID,
+              avatarUrl: user._avatarUrl,
+              city: user._city,
+              country: user._country,
+              gender: user._gender,
+              language: user._language,
+              nickName: user._nickName,
+              province: user._province,
+              vipBeginTime: user._vipBeginTime,
+              // 三天体验会员
+              vipEndTime: user._vipEndTime
+            },
+          })
+      } catch (e) {
+        console.log("更新失败");
+        console.error(e)
+        return "更新数据失败"
+      }
+      return "OK"
+    }
   }
 
   switch (event.flag) {
@@ -83,6 +123,6 @@ exports.main = async (event, context) => {
     case "delete":
       return deleteUser()
     case "update":
-      return updateUser()
+      return updateUser(event.user)
   }
 }

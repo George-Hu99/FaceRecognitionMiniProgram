@@ -1,10 +1,11 @@
 {
   "usingComponents": {
     "l-image-picker": "../../../miniprogram_npm/lin-ui/image-picker",
+    "l-toast": "../../../miniprogram_npm/lin-ui/toast",
     "van-uploader": "@vant/weapp/uploader/index",
     "van-button": "@vant/weapp/button/index",
     "van-transition": "@vant/weapp/transition/index",
-    "l-toast": "../../../miniprogram_npm/lin-ui/toast",
+    "van-toast": "@vant/weapp/toast/index",
     "van-icon": "@vant/weapp/icon/index"
   },
   "enablePullDownRefresh": false

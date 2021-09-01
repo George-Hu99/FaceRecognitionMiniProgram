@@ -1,4 +1,5 @@
 <!-- pages/person/home/home.wxml -->
+<van-toast id="van-toast"/>
 <scroll-view scroll-y class="scrollPage" refresher-enabled="{{true}}" bindrefresherrefresh="refresh"
              refresher-triggered="{{hasRefresh}}">
   <view class="UCenter-bg">
@@ -41,12 +42,12 @@
     <!--        <text class="text-grey">切换主题</text>-->
     <!--      </view>-->
     <!--    </view>-->
-    <view class="cu-item arrow">
+    <view class="cu-item">
       <view class="content" bind:tap="newVersionUpdate">
         <van-icon name="newspaper-o" color="green" custom-style="margin-right: 10px;"/>
 <!--        <text class="cuIcon-formfill text-green"></text>-->
         <text class="text-grey">版本更新</text>
-        <text class="text-grey version-detail">v0.0.3</text>
+        <text class="text-grey version-detail">v1.0.2</text>
       </view>
     </view>
     <view class="cu-item arrow">

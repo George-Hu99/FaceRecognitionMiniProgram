@@ -9,6 +9,7 @@ import {
 import {
   promisic
 } from "../../../miniprogram_npm/lin-ui/utils/util"
+import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast'
 
 const app = getApp()
 
@@ -39,13 +40,14 @@ Component({
       this.setData({
         isVip: new Date().getTime() < userInfo.vipEndTime
       })
-      // 存入全局数据
+      /*---------------------------------
+      * 写入 global data
+      ----------------------------------*/
       app.globalData.userInfo = userInfo
-      // 存入本地缓存
-      wx.setStorage({
-        key: "userInfo",
-        data: userInfo
-      })
+      /* -------------------
+      * 写入本地缓存
+      ----------------------*/
+      wx.setStorageSync("userInfo", userInfo)
     },
     'logged': (logged) => {
       app.globalData.logged = logged
@@ -83,48 +85,31 @@ Component({
       * vipBeginTime
       * vipEndTime
       -------------------*/
-      const response = await wx.cloud.callFunction({
-        name: 'user',
-        data: {
-          flag: 'select',
-          user: user
-        }
-      })
-      const userInfoDetail = response.result
+      const userInfoDetail = await UserDao.selectUser(user)
       user._id = userInfoDetail._id
       user._openid = userInfoDetail._openid
       user.vipBeginTime = userInfoDetail.vipBeginTime
       user.vipEndTime = userInfoDetail.vipEndTime
 
       /*---------------------------------
-      * 结合 observes，写入 global data
+      * 结合 observes，写入 global data 和本地缓存
       ----------------------------------*/
       this.setData({
         logged: true,
         userInfo: user
       })
-
-      /* -------------------
-      * 写入本地缓存
-      ----------------------*/
-      wx.setStorageSync("userInfo", user)
     },
+    /**
+     * 下拉刷新 
+     */
     refresh() {
-      console.log("下拉刷新")
       //在这里请求数据啥的,最后把 hasRefresh 变成 false
       this.setData({
         hasRefresh: false
       })
     },
     async getOpenid() {
-      // 调用云函数，获取用户 openID
-      const openidRequestResult = await wx.cloud.callFunction({
-        name: 'user',
-        data: {
-          flag: 'login'
-        }
-      })
-      return openidRequestResult.result.openid
+      return UserDao.getOpenId()
     },
     accountSetting() {
       wx.navigateTo({
@@ -142,11 +127,22 @@ Component({
       })
     },
     privacyAgreement() {
-
+      Toast({
+        context: this,
+        message: '工程师还在秃头赶代码中~'
+      })
     },
     newVersionUpdate() {
+      Toast({
+        context: this,
+        message: '已是最新版本~'
+      })
     },
     appreciateSupport() {
+      Toast({
+        context: this,
+        message: '非常感谢，暂时还不需要哦~'
+      })
     }
   },
   lifetimes: {

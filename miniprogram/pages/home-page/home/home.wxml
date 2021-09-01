@@ -2,7 +2,7 @@
     <!-- pages/medicine-box/home/home.wxml -->
 <scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{true}}" style="height: 100vh">
   <view class="home-page-top" style="padding-top:{{StatusBar + 5}}px; height: {{CustomBar}}px">
-    <text class="home-page-top-text">表情识别</text>
+    <text class="home-page-top-text">主页</text>
   </view>
 
 
@@ -19,14 +19,13 @@
                   name="fade"
                   duration="1000">
     <van-uploader preview-size="200rpx" max-count="1" class="uploader" upload-text="点击上传图片" upload-icon="add-o"
-                 bind:after-read="afterRead"/>
+                  bind:after-read="afterRead"/>
   </van-transition>
 
-  <view class="recognise-history">
+  <view class="recognise-history" bind:tap="goToHistory">
     识别历史
     <van-icon name="arrow" size="23rpx"/>
   </view>
+  <van-toast id="van-toast"/>
+  <l-toast show="{{isFail}}" icon="error" title="失败，请重试"/>
 </scroll-view>
-
-
-<l-toast show="{{isFail}}" icon="error" title="失败，请重试"/>

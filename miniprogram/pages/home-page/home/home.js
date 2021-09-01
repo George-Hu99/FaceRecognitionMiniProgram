@@ -1,6 +1,11 @@
 // pages/medicine-box/home/home.js
-import {promisic} from "../../../miniprogram_npm/lin-ui/utils/util"
-import {User} from "../../../model/user"
+import {
+  promisic
+} from "../../../miniprogram_npm/lin-ui/utils/util"
+import {
+  User
+} from "../../../model/user"
+import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast'
 
 const app = getApp()
 let image = ""
@@ -89,7 +94,9 @@ Component({
       wx.showLoading({
         title: '加载中'
       })
-      let {file} = event.detail
+      let {
+        file
+      } = event.detail
       /* -----------------------
       * 上传到云开发存储中,获取 file ID
       -----------------------*/
@@ -136,7 +143,8 @@ Component({
         console.log("========================")
         promisic(wx.navigateTo({
           url: '/pages/home-page/result/result',
-          success: await function (res) {
+          success: await
+          function (res) {
             // 通过eventChannel向被打开页面传送数据
             res.eventChannel.emit('result', {
               data: recognise_result.result
@@ -153,6 +161,12 @@ Component({
         })
         wx.showToast(recognise_result.errMsg)
       }
+    },
+    goToHistory() {
+      Toast({
+        context: this,
+        message: '工程师还在秃头赶代码中~'
+      })
     }
   },
   pageLifetimes: {},

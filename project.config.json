@@ -38,7 +38,9 @@
       }
     ],
     "minifyWXSS": true,
-    "showES6CompileOption": false
+    "showES6CompileOption": false,
+    "useSummerCompiler": false,
+    "minifyWXML": true
   },
   "appid": "wxd7f92a3d1ea433d6",
   "projectname": "FaceRecognition",
