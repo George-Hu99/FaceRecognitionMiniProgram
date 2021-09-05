@@ -1,5 +1,5 @@
 <!--pages/person-page/account/account.wxml-->
-<wxs module="formatTime" src="/utils/time.wxs"></wxs>
+<wxs module="formatTime" src="../../../utils/time.wxs"></wxs>
 <scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{false}}"
              style="height: 100vh">
   <view class="home-page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
