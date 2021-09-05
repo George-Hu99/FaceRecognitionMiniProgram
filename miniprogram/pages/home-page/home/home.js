@@ -127,9 +127,9 @@ Component({
           image: fileID
         }
       })
-      console.log("=========pages/medicine-box/home/home.js detectResult=========")
+      console.log("=========image detect result=========")
       console.log(recognise_result)
-      console.log("========================")
+      console.log("======================================")
 
       // 获得结果之后，无论正确与否，都要停止加载状态
       wx.hideLoading()

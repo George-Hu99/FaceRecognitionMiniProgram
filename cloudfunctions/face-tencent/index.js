@@ -1,30 +1,30 @@
-// 云函数入口文件
 const cloud = require('wx-server-sdk')
 // Depends on tencentcloud-sdk-nodejs version 4.0.3 or higher
 const tencentcloud = require("tencentcloud-sdk-nodejs")
 
 cloud.init({
-  // API 调用都保持和云函数当前所在环境一致
   // env: cloud.DYNAMIC_CURRENT_ENV
   env: 'wechatcloud-0g0j7gt09d1fd61a'
 })
 
 const wxContext = cloud.getWXContext()
 
-// 云函数入口函数
 exports.main = async (event, context) => {
+  // get file ID
   const imageID = event.image
   const fileList = []
   fileList[0] = imageID
+  // get temporary URL by file ID
   const result = await cloud.getTempFileURL({
     fileList: fileList
   })
-  console.log("===============")
-  console.log(result.fileList[0])
-  console.log("===============")
   const tempFileURL = result.fileList[0].tempFileURL
+  console.log("======== image temporary URL ========")
+  console.log(tempFileURL)
+  console.log("=====================================")
 
   const IaiClient = tencentcloud.iai.v20200303.Client
+  // 腾讯云配置
   const clientConfig = {
     credential: {
       secretId: "AKID2pMfZCbMfhTyFIphU0GNEo9uRmsisyMU",
@@ -47,17 +47,23 @@ exports.main = async (event, context) => {
   let detectResult
   await client.DetectFaceAttributes(params).then(
     (data) => {
-      console.log("========detectResult===========")
+      console.log("========image detect result===========")
       console.log(data)
-      console.log("===================")
+      console.log("======================================")
       detectResult = data
     },
     (err) => {
+      console.log("======image detect error occured======")
       console.error("error", err)
+      console.log("======================================")
+      return -1
     }
   )
 
 
+  // 保存识别结果
+
+  
   /*--------------------------------------
   * 人脸注册
   * 将当前检测的人脸注册到人脸库中
@@ -73,10 +79,14 @@ exports.main = async (event, context) => {
   }
   client.CreatePerson(add_face_params).then(
     (data) => {
+      console.log("=============image regist result=============");
       console.log(data)
+      console.log("==============================================");
     },
     (err) => {
+      console.log("=============image regist error occured=============");
       console.error("error", err)
+      console.log("==============================================");
     }
   )
   return detectResult

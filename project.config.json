@@ -44,7 +44,7 @@
   },
   "appid": "wxd7f92a3d1ea433d6",
   "projectname": "FaceRecognition",
-  "libVersion": "2.18.0",
+  "libVersion": "2.19.2",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
