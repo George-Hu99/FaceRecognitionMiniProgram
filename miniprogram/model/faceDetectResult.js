@@ -18,6 +18,7 @@ class FaceDetectResult {
   #_skin
   #_smile
   #_requestId
+  #_detectTime
 
   constructor() {
   }
@@ -172,6 +173,14 @@ class FaceDetectResult {
 
   set requestId(value) {
     this.#_requestId = value
+  }
+
+  get detectTime() {
+    return this.#_detectTime
+  }
+
+  set detectTime(value) {
+    this.#_detectTime = value
   }
 }
 

@@ -42,6 +42,7 @@ class FaceDetectResultDao {
     faceDetectResult.skin = {'probability': 0.9996923208236694, 'type': 0}
     faceDetectResult.smile = 30
     faceDetectResult.requestId = "8d99f07a-b7bb-4de1-81b0-d6541aa72975"
+    faceDetectResult.detectTime = new Date().getTime() // 使用 Unix 时间戳
 
     console.log(faceDetectResult)
   }
