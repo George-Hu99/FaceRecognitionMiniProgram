@@ -14,7 +14,7 @@
     </view>
   </van-transition>
 
-  <!--上传图片控件-->
+  <!--上传图片控件。-->
   <van-transition show="{{ logged }}" custom-class="uploadImg" custom-style="padding-top: {{CustomBar}}px;"
                   name="fade"
                   duration="1000">
