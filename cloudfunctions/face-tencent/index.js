@@ -27,8 +27,8 @@ exports.main = async (event, context) => {
   // 腾讯云配置
   const clientConfig = {
     credential: {
-      secretId: "AKID2pMfZCbMfhTyFIphU0GNEo9uRmsisyMU",
-      secretKey: "1mHKelodDakurqbgwvglnZv2ytYyrVu7"
+      secretId: "",
+      secretKey: ""
     },
     region: "ap-guangzhou",
     profile: {
