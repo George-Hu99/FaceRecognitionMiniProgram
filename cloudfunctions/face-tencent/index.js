@@ -63,31 +63,31 @@ exports.main = async (event, context) => {
 
   // 保存识别结果
 
-  
+
   /*--------------------------------------
   * 人脸注册
   * 将当前检测的人脸注册到人脸库中
   --------------------------------------*/
-  const add_face_params = {
-    "GroupId": "001",
-    "PersonName": wxContext.OPENID,
-    "PersonId": wxContext.OPENID,
-    "Gender": detectResult.FaceDetailInfos[0].FaceDetailAttributesInfo.Gender.Type + 1,
-    "Url": tempFileURL,
-    "UniquePersonControl": 3,
-    "QualityControl": 0
-  }
-  client.CreatePerson(add_face_params).then(
-    (data) => {
-      console.log("=============image regist result=============");
-      console.log(data)
-      console.log("==============================================");
-    },
-    (err) => {
-      console.log("=============image regist error occured=============");
-      console.error("error", err)
-      console.log("==============================================");
-    }
-  )
+  // const add_face_params = {
+  //   "GroupId": "001",
+  //   "PersonName": wxContext.OPENID,
+  //   "PersonId": wxContext.OPENID,
+  //   "Gender": detectResult.FaceDetailInfos[0].FaceDetailAttributesInfo.Gender.Type + 1,
+  //   "Url": tempFileURL,
+  //   "UniquePersonControl": 3,
+  //   "QualityControl": 0
+  // }
+  // client.CreatePerson(add_face_params).then(
+  //   (data) => {
+  //     console.log("=============image regist result=============");
+  //     console.log(data)
+  //     console.log("==============================================");
+  //   },
+  //   (err) => {
+  //     console.log("=============image regist error occured=============");
+  //     console.error("error", err)
+  //     console.log("==============================================");
+  //   }
+  // )
   return detectResult
 }

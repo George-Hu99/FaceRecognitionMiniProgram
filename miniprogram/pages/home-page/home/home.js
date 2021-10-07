@@ -6,6 +6,12 @@ import {
   User
 } from "../../../model/user"
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast'
+import {
+  FaceDetectResult
+} from "../../../model/faceDetectResult"
+import {
+  FaceDetectResultDao
+} from "../../../modelDao/faceDetectResultDao"
 
 const app = getApp()
 let image = ""
@@ -144,15 +150,15 @@ Component({
         promisic(wx.navigateTo({
           url: '/pages/home-page/result/result',
           success: await
-          function (res) {
-            // 通过eventChannel向被打开页面传送数据
-            res.eventChannel.emit('result', {
-              data: recognise_result.result
-            })
-            res.eventChannel.emit('img', {
-              data: file.url
-            })
-          }
+            function (res) {
+              // 通过eventChannel向被打开页面传送数据
+              res.eventChannel.emit('result', {
+                data: recognise_result.result
+              })
+              res.eventChannel.emit('img', {
+                data: file.url
+              })
+            }
         }))
       } else {
         // 否则，显示失败的提示
