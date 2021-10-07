@@ -1,8 +1,8 @@
 class signInStatus {
-  #openid
-  #status
-  #signTime
-  #signContent
+  #_openid
+  #_status
+  #_signTime
+  #_signContent
 
   constructor(){
   }
