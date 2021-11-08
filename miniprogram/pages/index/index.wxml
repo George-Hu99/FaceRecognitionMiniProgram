@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <home-page wx:if="{{PageName==='home-page'}}"></home-page>
+<social-page wx:if="{{PageName==='social-page'}}"></social-page>
 <person-page wx:if="{{PageName==='person-page'}}"></person-page>
 
 <view class="swz-tab-bar" wx:if="{{showTabbar}}">
@@ -7,6 +8,12 @@
     <image src="../../images/tabbar/homepage{{PageName==='home-page'?'-chosen':''}}.png"
            class="swz-tab-bar-items-img"></image>
     <view class="swz-tab-bar-items-text {{PageName==='home-page'?'text-green':'text-gray'}}">主页</view>
+  </view>
+  
+  <view class="swz-tab-bar-items" bindtap="NavChange" data-cur="social-page">
+    <image src="../../images/tabbar/social-page{{PageName==='social-page'?'-chosen':''}}.png"
+           class="swz-tab-bar-items-img"></image>
+    <view class="swz-tab-bar-items-text {{PageName==='social-page'?'text-green':'text-gray'}}">社区</view>
   </view>
 
   <view class="swz-tab-bar-items"

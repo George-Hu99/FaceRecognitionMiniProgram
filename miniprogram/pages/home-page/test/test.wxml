@@ -1,0 +1,31 @@
+<!-- <wxs module='timeTool' src='../../../utils/time.wxs'></wxs> -->
+<!--pages/home-page/test/test.wxml-->
+    <scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{true}}" style="height: 100vh">
+  <view class="home-page-top" style="padding-top:{{StatusBar + 5}}px; height: {{CustomBar}}px">
+    <text class="home-page-top-text">情绪检测</text>
+  </view>
+
+
+  <van-transition show="{{ !logged }}" name="fade-up" duration="1000">
+    <view bind:tap="onGetUserProfile" class="LoginPrompt">
+      <text class="LoginPrompt_title">请先登录</text>
+      <text class="LoginPrompt_title">Login First</text>
+      <text class="LoginPrompt_content">不登录的话,怎么知道我有多好玩呢🎈</text>
+    </view>
+  </van-transition>
+
+  <!--上传图片控件。-->
+  <van-transition show="{{ logged }}" custom-class="uploadImg" custom-style="padding-top: {{CustomBar}}px;"
+                  name="fade"
+                  duration="1000">
+    <van-uploader preview-size="200rpx" max-count="1" class="uploader" upload-text="点击上传图片" upload-icon="add-o"
+                  bind:after-read="afterRead"/>
+  </van-transition>
+
+  <view class="recognise-history" bind:tap="goToHistory">
+    识别历史
+    <van-icon name="arrow" size="23rpx"/>
+  </view>
+  <van-toast id="van-toast"/>
+  <l-toast show="{{isFail}}" icon="error" title="失败，请重试"/>
+</scroll-view>

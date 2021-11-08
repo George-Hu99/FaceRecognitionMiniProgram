@@ -1,0 +1,8 @@
+<!--pages/social-page/home/home.wxml-->
+<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{true}}" style="height: 100vh">
+  <view class="social-page-top" style="padding-top:{{StatusBar + 5}}px; height: {{CustomBar}}px">
+    <text class="social-page-top-text">社区</text>
+  </view>
+
+
+</scroll-view>

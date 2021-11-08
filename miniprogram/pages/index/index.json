@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "home-page": "../home-page/home/home",
+    "social-page": "../social-page/home/home",
     "person-page": "../person-page/home/home"
   }
 }
