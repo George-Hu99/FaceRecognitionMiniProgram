@@ -19,18 +19,16 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": true,
-    "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
+    "useMultiFrameRuntime": false,
     "useApiHook": true,
-    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
     "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
     "packNpmManually": true,
     "packNpmRelationList": [
       {
@@ -38,6 +36,10 @@
         "miniprogramNpmDistDir": "./miniprogram/"
       }
     ],
+    "lazyloadPlaceholderEnable": false,
+    "useApiHostProcess": true,
+    "enableEngineNative": false,
+    "userConfirmedBundleSwitch": false,
     "minifyWXSS": true,
     "disableUseStrict": false,
     "minifyWXML": true,

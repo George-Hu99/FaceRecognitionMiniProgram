@@ -1,1 +1,41 @@
-/* pages/home-page/questionnaire/questionnaire.wxss */
+.title{
+  margin-top: 50rpx; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50rpx;
+  font-weight: bolder;
+}
+
+.content{
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  color:gray;
+}
+
+.row{
+  display: flex;
+}
+
+.detail{
+  margin-left: 35rpx;
+  margin-right: 35rpx;
+  margin-top: 70rpx;
+}
+
+.left{
+  font-size: 40rpx;
+  margin-right: 220rpx;
+}
+
+.right{
+  margin-top: 10rpx;
+  color: grey;
+}
+
+.cut_up{
+  border: 1rpx solid #DCDCDC;
+  margin-left: 40rpx;
+  margin: 28rpx;
+}
