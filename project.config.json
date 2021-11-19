@@ -54,6 +54,14 @@
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "compileType": "miniprogram",
   "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
     "plugin": {
       "list": []
     },
@@ -64,7 +72,14 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "id": -1,
+          "name": "pages/home-page/home/home",
+          "pathName": "pages/home-page/home/home",
+          "scene": null
+        }
+      ]
     }
   }
 }

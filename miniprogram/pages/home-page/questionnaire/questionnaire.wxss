@@ -19,14 +19,14 @@
 }
 
 .detail{
-  margin-left: 35rpx;
+  margin-left: 45rpx;
   margin-right: 35rpx;
   margin-top: 70rpx;
 }
 
 .left{
-  font-size: 40rpx;
-  margin-right: 220rpx;
+  font-size: 35rpx;
+  margin-left: 10rpx;
 }
 
 .right{
@@ -36,6 +36,13 @@
 
 .cut_up{
   border: 1rpx solid #DCDCDC;
-  margin-left: 40rpx;
   margin: 28rpx;
+}
+
+.ques1 .left{
+  margin-right: 240rpx;
+}
+
+.ques2 .left{
+  margin-right: 270rpx;
 }

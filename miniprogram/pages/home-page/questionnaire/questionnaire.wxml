@@ -6,28 +6,28 @@
 </view>
 
 <view class="detail">
-  <view class="ques1" class="row">
+  <view class="ques1 row">
     <view class="left">
-      心理健康调查问卷(1)
+      大学生恋爱心理调查
     </view>
     <view class="right">
-      共xx题
+      共16题
     </view>
   </view>
   <view class="cut_up"></view>
 
-  <view class="ques2" class="row">
+  <view class="ques2 row">
     <view class="left">
-      心理健康调查问卷(2)
+      校园心理健康调查
     </view>
     <view class="right">
-      共xx题
+      共22题
     </view>
   </view>
 
   <view class="cut_up"></view>
 
-  <view class="ques3" class="row">
+  <view class="ques3 row">
     <view class="left">
       心理健康调查问卷(3)
     </view>
@@ -38,7 +38,7 @@
 
   <view class="cut_up"></view>
 
-  <view class="ques4" class="row">
+  <view class="ques4 row">
     <view class="left">
       心理健康调查问卷(4)
     </view>
@@ -49,7 +49,7 @@
 
   <view class="cut_up"></view>
 
-  <view class="ques5" class="row">
+  <view class="ques5 row">
     <view class="left">
       心理健康调查问卷(5)
     </view>
@@ -60,7 +60,7 @@
 
   <view class="cut_up"></view>
 
-  <view class="ques6" class="row">
+  <view class="ques6 row">
     <view class="left">
       心理健康调查问卷(6)
     </view>
@@ -71,7 +71,7 @@
 
   <view class="cut_up"></view>
 
-  <view class="ques7" class="row">
+  <view class="ques7 row">
     <view class="left">
       心理健康调查问卷(7)
     </view>
@@ -82,7 +82,7 @@
 
   <view class="cut_up"></view>
 
-  <view class="ques8" class="row">
+  <view class="ques8 row">
     <view class="left">
       心理健康调查问卷(8)
     </view>
