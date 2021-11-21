@@ -1,6 +1,6 @@
 .question_1{
   width: 100%;
-  height: 8030rpx;
+  height: 8320rpx;
   background:	#FAFAD2;
   background-size: 100% 100%;
   padding-top: 60rpx;
@@ -15,7 +15,7 @@
 }
 .question_1 .ask_question{
   width: 639rpx;
-  height: 7940rpx;
+  height: 8200rpx;
   background: #FFFFFF;
   box-shadow: 0rpx 4rpx 30rpx 0rpx rgba(13,46,139,0.39);
   border-radius: 16rpx;
