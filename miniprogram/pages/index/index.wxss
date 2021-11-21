@@ -1,5 +1,5 @@
 /**index.wxss**/
-.swz-tab-bar {
+.custom-tab-bar {
     width: 400rpx;
     height: 100rpx;
     background-color: #fff;
@@ -12,14 +12,14 @@
     flex-direction: row;
 }
 
-.swz-tab-bar-items {
+.custom-tab-bar-items {
     display: flex;
     flex-direction: column;
     width: 200rpx;
     height: 100rpx;
 }
 
-.swz-tab-bar-items-img {
+.custom-tab-bar-items-img {
     width: 50rpx;
     height: 50rpx;
     margin-left: 50%;
@@ -27,7 +27,7 @@
     margin-top: 15rpx;
 }
 
-.swz-tab-bar-items-text {
+.custom-tab-bar-items-text {
     font-size: 20rpx;
     width: 100rpx;
     line-height: 20rpx;
