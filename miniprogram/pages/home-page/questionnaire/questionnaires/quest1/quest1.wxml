@@ -1,0 +1,35 @@
+<!-- 回答问题 --> 
+<view class="question_1">
+  <view class="ask_question">
+      <view class="ques_title">大学生恋爱心理调查</view>
+      <view class="ask_question_item" wx:for="{{questionList}}" wx:key="index" wx:for-item="a" wx:for-index="index">
+        <view class="title">
+          <view class="left">Q{{index+1}}</view>
+          <view class="right">{{a.title}}</view>
+        </view>
+        <view class="question_list">
+          <radio-group bindchange="radioChange" data-index="{{index+1}}">
+            <view class="question_list_item" wx:for="{{a.items}}" wx:key="index" wx:for-item="b">
+              <radio value="{{b.name}}">
+                <view class="left"> <span class="yuan"></span></view>
+                <view class="right">{{b.value}}</view>
+              </radio>
+            </view>
+          </radio-group>
+        </view>
+      </view>
+      <view class="ask_question_item">
+        <view class="title">
+          <view class="left">Q18</view>
+          <view class="right">有什么期待及建议？</view>
+        </view>
+        <view class="textarea_box">
+            <textarea class="textarea" placeholder="请留下您的宝贵建议，谢谢！" placeholder-class="place-holder" bindinput="textareaInput"></textarea>
+        </view>
+      </view>
+ 
+      <view class="btn">
+        <span class="submit_btn" bindtap="submit_btn"> 提交</span>
+      </view>
+  </view>
+</view>

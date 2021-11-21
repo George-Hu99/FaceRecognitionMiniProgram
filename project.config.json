@@ -77,6 +77,21 @@
           "id": -1,
           "name": "pages/home-page/home/home",
           "pathName": "pages/home-page/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "pages/home-page/questionnaire/questionnaires/quest1/quest1",
+          "pathName": "pages/home-page/questionnaire/questionnaires/quest1/quest1",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/home-page/questionnaire/questionnaire",
+          "pathName": "pages/home-page/questionnaire/questionnaire",
+          "query": "",
           "scene": null
         }
       ]
