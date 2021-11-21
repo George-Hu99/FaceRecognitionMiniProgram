@@ -13,3 +13,7 @@
   margin-right: 20rpx;
   color:gray;
 }
+
+.blank{
+  margin-top: 50rpx;
+}

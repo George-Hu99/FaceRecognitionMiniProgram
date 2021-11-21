@@ -30,6 +30,16 @@ Page({
         {value:'信息管理',name:'信息管理'}]
       },
       {
+        title:'您的所在班级是？',
+        items:[
+        {value:'1班',name:'1班'},
+        {value:'2班',name:'2班'},
+        {value:'3班',name:'3班'},
+        {value:'4班',name:'4班'},
+        {value:'5班',name:'5班'},
+        {value:'6班',name:'6班'}]
+      },
+      {
         title:'觉得没有时间休闲，却又无法静心学习',
         items:[
         {value:'从未发生',name:'从未发生'},
