@@ -1,30 +1,36 @@
 {
-  "setting": {},
-  "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/home-page/result/result",
-          "pathName": "pages/home-page/result/result",
-          "query": "",
-          "scene": null
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
         },
-        {
-          "name": "pages/person-page/account/account",
-          "pathName": "pages/person-page/account/account",
-          "query": "",
-          "scene": null
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/home-page/test/result/result",
+                    "pathName": "pages/home-page/test/result/result",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "pages/person-page/account/account",
+                    "pathName": "pages/person-page/account/account",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "社区",
+                    "pathName": "pages/social-page/home/home",
+                    "query": "",
+                    "scene": null
+                }
+            ]
         }
-      ]
     }
-  }
 }

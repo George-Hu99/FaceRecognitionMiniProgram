@@ -1,7 +1,7 @@
 <!-- 回答问题 --> 
-<view class="question_2">
+<view class="question_5">
   <view class="ask_question">
-      <view class="ques_title">大学生失落心理调查</view>
+      <view class="ques_title">抑郁症自测</view>
       <view class="ask_question_item" wx:for="{{questionList}}" wx:key="index" wx:for-item="a" wx:for-index="index">
         <view class="title">
           <view class="left">Q{{index+1}}</view>
@@ -18,6 +18,16 @@
           </radio-group>
         </view>
       </view>
+      <view class="ask_question_item">
+        <view class="title">
+          <view class="left">Q25</view>
+          <view class="right">有什么期待及建议？</view>
+        </view>
+        <view class="textarea_box">
+            <textarea class="textarea" placeholder="请留下您的宝贵建议，谢谢！" placeholder-class="place-holder" bindinput="textareaInput"></textarea>
+        </view>
+      </view>
+ 
       <view class="btn">
         <span class="submit_btn" bindtap="submit_btn"> 提交</span>
       </view>

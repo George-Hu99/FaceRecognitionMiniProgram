@@ -1,20 +1,23 @@
 <!--pages/person-page/account/account.wxml-->
 <wxs module="formatTime" src="../../../utils/time.wxs"></wxs>
-<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{false}}"
-             style="height: 100vh">
+<scroll-view scroll-y enable-back-to-top="{{true}}" refresher-enabled="{{false}}" style="height: 100vh">
   <view class="home-page-top" style="padding-top:{{StatusBar}}px;height: {{CustomBar}}px">
     <text class="home-page-top-text">账户设置</text>
   </view>
   <view class="UCenter-bg">
     <view class="avatar_btn">
-      <button class="userinfo-avatar"
-              style='background-image: url({{logged ? userInfo._avatarUrl : "https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210102232628.png"}})'
-              size="default"></button>
+      <button class="userinfo-avatar" style='background-image: url({{logged ? userInfo._avatarUrl : "https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210102232628.png"}})' size="default"></button>
     </view>
   </view>
 
 
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content">
+        <text class="text-grey">绑定学/工号</text>
+        <text class="text-grey" style="float: right">{{userInfo._nickName}}</text>
+      </view>
+    </view>
     <view class="cu-item">
       <view class="content">
         <text class="text-grey">昵称</text>
@@ -29,29 +32,19 @@
     </view>
     <view class="cu-item">
       <view class="content" bind:tap="copyOpenID">
-        <text class="text-grey">会员ID</text>
+        <text class="text-grey">用户ID</text>
         <text class="text-grey" style="float: right;font-size: smaller">{{userInfo._openid}}</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bind:tap="goToVip">
-        <text class="text-grey">VIP续费</text>
-        <van-icon name="gem-o" color="red" style="margin-left: 20rpx"/>
-        <text class="text-grey"
-              style="float: right;font-size: smaller">{{ formatTime.formatTime(userInfo._vipEndTime)}}到期</text>
-      </view>
-    </view>
+    <!-- <view class="cu-item arrow"> -->
+      <!-- <view class="content" bind:tap="goToVip"> -->
+        <!-- <text class="text-grey">VIP续费</text> -->
+        <!-- <van-icon name="gem-o" color="red" style="margin-left: 20rpx" /> -->
+        <!-- <text class="text-grey" style="float: right;font-size: smaller">{{ formatTime.formatTime(userInfo._vipEndTime)}}到期</text> -->
+      <!-- </view> -->
+    <!-- </view> -->
   </view>
 
-  <van-action-sheet
-      bind:select="changeGender"
-      bind:close="closeChangeGender"
-      safe-area-inset-bottom="{{true}}"
-      close-on-click-action="{{true}}"
-      close-on-click-overlay="{{true}}"
-      show="{{ showChangeGender }}"
-      actions="{{ actions }}"
-      description="修改性别"
-  />
-  <van-toast id="van-toast"/>
+  <van-action-sheet bind:select="changeGender" bind:close="closeChangeGender" safe-area-inset-bottom="{{true}}" close-on-click-action="{{true}}" close-on-click-overlay="{{true}}" show="{{ showChangeGender }}" actions="{{ actions }}" description="修改性别" />
+  <van-toast id="van-toast" />
 </scroll-view>

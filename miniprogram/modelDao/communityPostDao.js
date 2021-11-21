@@ -41,5 +41,5 @@ class communityPostDao {
 }
 
 export {
-  UserDao
+  communityPostDao
 }

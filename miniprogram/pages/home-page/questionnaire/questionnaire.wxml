@@ -5,11 +5,12 @@
     为了更好地了解同学们的心理健康状态，我们需要您完成本次调查。请您根据自己真实的心理感受作答，您所填写的信息不会外泄，所获得的数据仅用于了解情况，以便指导后续心理健康服务工作。
 </view>
 
+<view class="blank"></view>
+
 <van-cell-group inset="true">
-  <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点" url="./questionnaires/quest1/quest1.wxml"/>
-  <van-cell title="大学生失落心理调查" is-link value="共24题" label="调查学生的心情和感受" url="./questionnaires/quest1/quest2.wxml"/>
-  <van-cell title="网络心理咨询调查" is-link value="共16题" label="调查大学生对于网络心理咨询的态度"/>
-  <van-cell title="单元格" value="内容" label="描述信息" />
-  <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>
-  <van-cell title="单元格" value="内容" label="描述信息" />
+  <van-cell title="大学生恋爱心理调查" is-link value="共18题" label="研究大学生恋爱心理特点" url="./questionnaires/quest1/quest1"/>
+  <van-cell title="大学生失落心理调查" is-link value="共24题" label="调查学生的心情和感受" url="./questionnaires/quest1/quest2"/>
+  <van-cell title="网络心理咨询调查" is-link value="共16题" label="调查大学生对于网络心理咨询的态度" url="./questionnaires/quest3/quest3"/>
+  <van-cell title="大学生心理压力调查" is-link value="共17题" label="调查当代大学生的心理压力" url="./questionnaires/quest4/quest4"/>
+  <van-cell title="抑郁症自测" is-link value="共25题" label="抑郁症自测题目量表-贝克抑郁自评量表(BDI-II)被广泛运用于抑郁症筛查。" url="./questionnaires/quest5/quest5"/>
 </van-cell-group>

@@ -28,21 +28,19 @@
     <text class="home-page-top-text">识别结果</text>
   </view>
   <view class="image-view">
-    <image src="{{current_image_url}}" mode="widthFix" alt="" class="cards-img"/>
+    <image src="{{current_image_url}}" mode="widthFix" alt="" class="cards-img" />
   </view>
   <view class="cards cards-circle">
 
     <view class="swz-circle">
-      <l-circle outer-diameter='150' inner-diameter='100'
-                percent='{{detectResult.FaceDetailAttributesInfo.Beauty}}'></l-circle>
+      <l-circle outer-diameter='150' inner-diameter='100' percent='{{detectResult.FaceDetailAttributesInfo.Beauty}}'></l-circle>
       <view style="margin-top: 20rpx">
         <text>颜值：{{detectResult.FaceDetailAttributesInfo.Beauty}}</text>
       </view>
     </view>
 
     <view class="swz-circle">
-      <l-circle outer-diameter='150' inner-diameter='100'
-                percent='{{detectResult.FaceDetailAttributesInfo.Smile}}'></l-circle>
+      <l-circle outer-diameter='150' inner-diameter='100' percent='{{detectResult.FaceDetailAttributesInfo.Smile}}'></l-circle>
       <view style="margin-top: 20rpx">
         <text>微笑值：{{detectResult.FaceDetailAttributesInfo.Smile}}</text>
       </view>
@@ -51,6 +49,7 @@
   </view>
 
   <view class="cards">
+    <text>分析结果</text>
     <text>预估年龄：{{detectResult.FaceDetailAttributesInfo.Age}}</text>
     <text>性别：{{detectResult.FaceDetailAttributesInfo.Gender.Type === 0 ? "男性" : "女性"}}</text>
     <text>情绪：{{emotionType[detectResult.FaceDetailAttributesInfo.Emotion.Type]}}</text>
@@ -72,8 +71,7 @@
 
     <!--帽子信息-->
     <text>帽子：{{hatStyle[detectResult.FaceDetailAttributesInfo.Hat.Style.Type]}}</text>
-    <text
-        show="{{detectResult.FaceDetailAttributesInfo.Hat.Style.Type!==0}}">帽子颜色：{{hatColor[detectResult.FaceDetailAttributesInfo.Hat.Color.Type]}}</text>
+    <text show="{{detectResult.FaceDetailAttributesInfo.Hat.Style.Type!==0}}">帽子颜色：{{hatColor[detectResult.FaceDetailAttributesInfo.Hat.Color.Type]}}</text>
 
     <text>口罩：{{detectResult.FaceDetailAttributesInfo.Mask.Type === 0 ? "不戴口罩" : "佩戴口罩"}}</text>
     <text>胡须：{{detectResult.FaceDetailAttributesInfo.Moustache.Type === 0 ? "无胡须" : "有胡须"}}</text>
