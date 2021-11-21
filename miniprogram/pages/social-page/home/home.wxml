@@ -3,6 +3,20 @@
   <view class="social-page-top" style="padding-top:{{StatusBar + 5}}px; height: {{CustomBar}}px">
     <text class="social-page-top-text">社区</text>
   </view>
+  <view class="person-info">
+    <view class="userAvatar">
+      <button bind:tap="onGetUserProfile" class="userinfo-avatar" style='background-image: url({{userInfo ? userInfo._avatarUrl : "https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210102232628.png"}})' size="default"></button>
+      <view class="text-xl userinfo-nickname">
+        {{userInfo.nickName}}
+        <text class="text-df">{{userInfo.province}}</text>
+      </view>
+      <view class="signin">
+        <van-button round color="linear-gradient(to right, #4bb0ff, #6149f6)" custom-style="width: 200%">今日打卡</van-button>
+      </view>
+    </view>
+  </view>
 
-
+  <van-skeleton title avatar row="5" loading="{{ loading }}">
+    <view>实际内容</view>
+  </van-skeleton>
 </scroll-view>

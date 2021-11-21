@@ -1,6 +1,6 @@
 /* pages/home-page/questionnaire/questionnaires/quest2/quest2.wxss */.question_2{
   width: 100%;
-  height: 9900rpx;
+  height: 10180rpx;
   background:	#FAFAD2;
   background-size: 100% 100%;
   padding-top: 60rpx;
@@ -15,7 +15,7 @@
 }
 .question_2 .ask_question{
   width: 639rpx;
-  height: 9800rpx;
+  height: 10050rpx;
   background: #FFFFFF;
   box-shadow: 0rpx 4rpx 30rpx 0rpx rgba(13,46,139,0.39);
   border-radius: 16rpx;

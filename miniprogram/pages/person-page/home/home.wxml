@@ -1,66 +1,60 @@
 <!-- pages/person/home/home.wxml -->
-<van-toast id="van-toast"/>
-<scroll-view scroll-y class="scrollPage" refresher-enabled="{{true}}" bindrefresherrefresh="refresh"
-             refresher-triggered="{{hasRefresh}}">
+<van-toast id="van-toast" />
+<scroll-view scroll-y class="scrollPage" refresher-enabled="{{true}}" bindrefresherrefresh="refresh" refresher-triggered="{{hasRefresh}}">
   <view class="UCenter-bg">
-    <button bind:tap="onGetUserProfile" class="userinfo-avatar"
-            style='background-image: url({{userInfo ? userInfo._avatarUrl : "https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210102232628.png"}})'
-            size="default"></button>
+    <button bind:tap="onGetUserProfile" class="userinfo-avatar" style='background-image: url({{userInfo ? userInfo._avatarUrl : "https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210102232628.png"}})' size="default"></button>
     <view class="text-xl">
       {{userInfo.nickName}}
       <block wx:if="{{isVip}}">
-        <image
-            src="data:image/png;base64,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"
-            style="width: 35rpx;height: 35rpx"></image>
+        <image src="data:image/png;base64,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" style="width: 35rpx;height: 35rpx"></image>
       </block>
       <text class="text-df">{{userInfo.province}}</text>
     </view>
     <view class="margin-top-sm">
       <text></text>
     </view>
-    <image src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210320153840.gif" mode="scaleToFill"
-           class="gif-wave"></image>
+    <image src="https://myblog-figure-bed-1258528016.file.myqcloud.com/PicGo/20210320153840.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
       <view class="content" bindtap="accountSetting" data-link="">
-        <van-icon name="setting-o" color="orange" custom-style="margin-right: 10px;"/>
-<!--        <text class="cuIcon-settings text-orange"></text>-->
+        <van-icon name="setting-o" color="orange" custom-style="margin-right: 10px;" />
+        <!--        <text class="cuIcon-settings text-orange"></text>-->
         <text class="text-grey">账号设置</text>
       </view>
     </view>
     <view class="cu-item arrow">
       <view class="content" bindtap="privacyAgreement" data-link="">
-        <van-icon name="orders-o" color="olive" custom-style="margin-right: 10px;"/>
-<!--        <text class="cuIcon-text text-olive"></text>-->
+        <van-icon name="orders-o" color="olive" custom-style="margin-right: 10px;" />
+        <!--        <text class="cuIcon-text text-olive"></text>-->
         <text class="text-grey">隐私协议</text>
       </view>
     </view>
-    <!--    <view class="cu-item arrow">-->
-    <!--      <view class="content" bind:tap="switchTheme">-->
-    <!--        <text class="cuIcon-clothes text-yellow"></text>-->
-    <!--        <text class="text-grey">切换主题</text>-->
-    <!--      </view>-->
-    <!--    </view>-->
+    <!-- <view class="cu-item arrow"> -->
+    <!-- <view class="content" bind:tap="switchTheme"> -->
+    <!-- <text class="cuIcon-clothes text-yellow"></text> -->
+    <!-- <text class="text-grey">绑定学/工号</text> -->
+    <!-- </view> -->
+    <!-- </view> -->
     <view class="cu-item">
       <view class="content" bind:tap="newVersionUpdate">
-        <van-icon name="newspaper-o" color="green" custom-style="margin-right: 10px;"/>
-<!--        <text class="cuIcon-formfill text-green"></text>-->
+        <van-icon name="newspaper-o" color="green" custom-style="margin-right: 10px;" />
+        <!--        <text class="cuIcon-formfill text-green"></text>-->
         <text class="text-grey">版本更新</text>
-        <text class="text-grey version-detail">v1.0.2</text>
+        <text class="text-grey version-detail">v1.0.3</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="appreciateSupport">
-        <van-icon name="good-job-o" color="red" custom-style="margin-right: 10px;"/>
-<!--        <text class="cuIcon-appreciatefill text-red"></text>-->
-        <text class="text-grey">赞赏支持</text>
-      </view>
-    </view>
+    <!-- <view class="cu-item arrow"> -->
+    <!-- <view class="content" bindtap="appreciateSupport"> -->
+    <!-- <van-icon name="good-job-o" color="red" custom-style="margin-right: 10px;"/> -->
+    <!--        <text class="cuIcon-appreciatefill text-red"></text>-->
+    <!-- <text class="text-grey">赞赏支持</text> -->
+    <!-- </view> -->
+    <!-- </view> -->
     <view class="cu-item arrow">
       <button class="cu-btn content" open-type="feedback">
-        <van-icon name="service-o" color="cyan" custom-style="margin-right: 10px;"/>
-<!--        <text class="cuIcon-writefill text-cyan"></text>-->
+        <van-icon name="service-o" color="cyan" custom-style="margin-right: 10px;" />
+        <!--        <text class="cuIcon-writefill text-cyan"></text>-->
         <text class="text-grey">意见反馈</text>
       </button>
     </view>
