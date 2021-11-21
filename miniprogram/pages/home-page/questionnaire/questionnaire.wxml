@@ -7,7 +7,7 @@
 
 <van-cell-group inset="true">
   <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>
-  <van-cell title="单元格" value="内容" label="描述信息" />
+  <van-cell title="大学生失落心理调查" is-link value="共24题" label="调查学生的心情和感受"/>
   <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>
   <van-cell title="单元格" value="内容" label="描述信息" />
   <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>

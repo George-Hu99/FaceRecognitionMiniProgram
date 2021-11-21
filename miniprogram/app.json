@@ -14,6 +14,7 @@
     "pages/home-page/test/history/history",
     "pages/home-page/questionnaire/questionnaire",
     "pages/home-page/questionnaire/questionnaires/quest1/quest1",
+    "pages/home-page/questionnaire/questionnaires/quest2/quest2",
     "pages/home-page/booking/booking",
     "pages/home-page/consult/consult",
     "pages/home-page/sleep/sleep",

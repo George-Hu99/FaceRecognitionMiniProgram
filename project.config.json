@@ -93,6 +93,13 @@
           "pathName": "pages/home-page/questionnaire/questionnaire",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/home-page/questionnaire/questionnaires/quest2/quest2",
+          "pathName": "pages/home-page/questionnaire/questionnaires/quest2/quest2",
+          "query": "",
+          "scene": null
         }
       ]
     }
