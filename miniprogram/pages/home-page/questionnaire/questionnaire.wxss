@@ -13,36 +13,3 @@
   margin-right: 20rpx;
   color:gray;
 }
-
-.row{
-  display: flex;
-}
-
-.detail{
-  margin-left: 45rpx;
-  margin-right: 35rpx;
-  margin-top: 70rpx;
-}
-
-.left{
-  font-size: 35rpx;
-  margin-left: 10rpx;
-}
-
-.right{
-  margin-top: 10rpx;
-  color: grey;
-}
-
-.cut_up{
-  border: 1rpx solid #DCDCDC;
-  margin: 28rpx;
-}
-
-.ques1 .left{
-  margin-right: 240rpx;
-}
-
-.ques2 .left{
-  margin-right: 270rpx;
-}

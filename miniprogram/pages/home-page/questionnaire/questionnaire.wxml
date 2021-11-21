@@ -5,101 +5,11 @@
     为了更好地了解同学们的心理健康状态，我们需要您完成本次调查。请您根据自己真实的心理感受作答，您所填写的信息不会外泄，所获得的数据仅用于了解情况，以便指导后续心理健康服务工作。
 </view>
 
-<view class="detail">
-  <view class="ques1 row">
-    <view class="left">
-      大学生恋爱心理调查
-    </view>
-    <view class="right">
-      共16题
-    </view>
-  </view>
-  <view class="cut_up"></view>
-
-  <view class="ques2 row">
-    <view class="left">
-      校园心理健康调查
-    </view>
-    <view class="right">
-      共22题
-    </view>
-  </view>
-
-  <view class="cut_up"></view>
-
-  <view class="ques3 row">
-    <view class="left">
-      心理健康调查问卷(3)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-
-  <view class="cut_up"></view>
-
-  <view class="ques4 row">
-    <view class="left">
-      心理健康调查问卷(4)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-
-  <view class="cut_up"></view>
-
-  <view class="ques5 row">
-    <view class="left">
-      心理健康调查问卷(5)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-
-  <view class="cut_up"></view>
-
-  <view class="ques6 row">
-    <view class="left">
-      心理健康调查问卷(6)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-
-  <view class="cut_up"></view>
-
-  <view class="ques7 row">
-    <view class="left">
-      心理健康调查问卷(7)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-
-  <view class="cut_up"></view>
-
-  <view class="ques8 row">
-    <view class="left">
-      心理健康调查问卷(8)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-<view class="cut_up"></view>
-
-<view class="ques9" class="row">
-    <view class="left">
-      心理健康调查问卷(9)
-    </view>
-    <view class="right">
-      共xx题
-    </view>
-  </view>
-<view class="cut_up"></view>
-</view>
-
+<van-cell-group inset="true">
+  <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>
+  <van-cell title="单元格" value="内容" label="描述信息" />
+  <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>
+  <van-cell title="单元格" value="内容" label="描述信息" />
+  <van-cell title="大学生恋爱心理调查" is-link value="共16题" label="研究大学生恋爱心理特点"/>
+  <van-cell title="单元格" value="内容" label="描述信息" />
+</van-cell-group>
