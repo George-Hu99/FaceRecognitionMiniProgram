@@ -1,4 +1,4 @@
-// pages/home-page/questionnaire/questionnaires/quest1/quest1.js
+// pages/home-page/questionnaire/questionnaires/quest2/quest2.js
 Page({
 
   /**
