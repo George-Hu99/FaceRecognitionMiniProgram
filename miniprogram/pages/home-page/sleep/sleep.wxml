@@ -1,2 +1,74 @@
 <!--pages/home-page/sleep/sleep.wxml-->
-<text>pages/home-page/sleep/sleep.wxml</text>
+<block wx:if="{{loading === true && audioAction.method == 'play'}}">
+  <loading>歌曲加载中</loading>
+</block>
+<audio src="{{src}}" name="{{name}}" author="{{author}}" poster="{{poster}}" action="{{audioAction}}" bindplay="started" bindended="ended" bindtimeupdate="timeupdate" binderror="binderror" controls></audio>
+<!-- <scroll-view class="song-list">
+  <block wx:for="{{displayList}}" wx:for-item="song" wx:for-index="index" wx:key="song.src">
+    <view class="song-item {{index % 2 === 1 ? 'even': 'odd' }} {{src === song.src ? 'current': ''}}" bindtap="playItem" data-src="{{song.src}}">
+      <view class="song-no">{{displayList.length - index }}</view><view class="song-name">{{song.songname}}</view>
+    </view>
+  </block>
+</scroll-view>
+<view class="footer">
+  <view class="song-info">
+    <view class="song-name">{{name}}</view>
+    <view class="song-time">{{time}}</view>
+  </view>
+  <view class="controls">
+    <image class="btn btn-prev" bindtap="prev" src="../../home-page/sleep/images/prev.png">上一首</image>
+    <image class="btn btn-play" bindtap="play_pause" src="../../home-page/sleep/images/pause.png"></image>
+    <image class="btn btn-next" bindtap="next" src="../../home-page/sleep/images/next.png">下一首</image>
+    <image class="btn btn-mode" bindtap="switchMode" src="../../home-page/sleep/images/{{mode}}.png"></image>
+  </view>
+</view>
+<view class="switch-artist search" bindtap="goSearch">搜索</view>
+<picker value="0" range="{{artists}}" range-key="uname" bindchange="switchArtist" class="switch-artist">切换</picker> -->
+
+
+  <!-- 用户 openid
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" class="userinfo-opendata">
+      <view class="userinfo-block-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button 
+        wx:if="{{canIUseGetUserProfile}}" 
+        bindtap="getUserProfile"
+        class="userinfo-avatar"
+        style="background-image: url({{avatarUrl}})"
+        size="default"
+      ></button>
+      <button
+        wx:else
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+        class="userinfo-avatar"
+        style="background-image: url({{avatarUrl}})"
+        size="default"
+      ></button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-block-avatar" src="{{avatarUrl}}" mode="cover"></image>
+    </block>
+    <view class="userinfo-nickname-wrapper">
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    </view>
+  </view> -->
+
+  <!-- 雨声 -->
+  <view class="uploader" bindtap="tap1">
+    <navigator url="https://dc-hsd-1308443234.cos.ap-guangzhou.myqcloud.com/1294888855.mp3" open-type="navigate" class="uploader-text">
+      <text>白噪音-雨声</text>
+    </navigator>
+  </view>
+
+  <!-- 自然 -->
+  <view class="uploader" bindtap="tap2">
+    <navigator url="https://dc-hsd-1308443234.cos.ap-guangzhou.myqcloud.com/1809926053.mp3" open-type="navigate" class="uploader-text">
+      <text>白噪音-自然</text>
+    </navigator>
+  </view>
+

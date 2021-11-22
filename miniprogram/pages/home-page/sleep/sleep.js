@@ -8,6 +8,24 @@ Page({
 
   },
 
+  tap1(e){
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.title ='白噪声-雨声'
+    backgroundAudioManager.epname ='放松心情'
+    backgroundAudioManager.singer ='WeFive'
+    backgroundAudioManager.src ='https://dc-hsd-1308443234.cos.ap-guangzhou.myqcloud.com/1294888855.mp3'
+    BackgroundAudioManager.playBackgroundAudio()
+  },
+
+  tap2(e){
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.title ='白噪声-自然'
+    backgroundAudioManager.epname ='放松心情'
+    backgroundAudioManager.singer ='WeFive'
+    backgroundAudioManager.src ='https://dc-hsd-1308443234.cos.ap-guangzhou.myqcloud.com/1809926053.mp3'
+    BackgroundAudioManager.playBackgroundAudio()
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
