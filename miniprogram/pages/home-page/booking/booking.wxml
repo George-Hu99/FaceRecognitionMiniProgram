@@ -1,2 +1,53 @@
-<!--pages/home-page/booking/booking.wxml-->
-<text>pages/home-page/booking/booking.wxml</text>
+<view class="page">
+    <!-- 通知 -->
+    <van-notify id="van-notify" />
+    <view class="content">
+        <van-row>
+            <van-col>
+                <text class="title">健康咨询</text>
+            </van-col>
+        </van-row>
+        <van-row>
+            <van-col span="8">
+                <van-icon name="comment" size="50px" color="pink" class="icon" />
+            </van-col>
+        </van-row>
+        <van-cell-group>
+            <van-cell title="开始时间" value="{{startTime}}" bindtap="openStartTimePopup" />
+            <van-cell title="结束时间" value="{{lastTime}}" bindtap="openLastTimePopup" />
+            <van-cell title="预约老师" value="{{teacher}}" bindtap="openTeacherPopup" />
+            <van-cell title="预约地点" value="{{location}}" bindtap="openLocationPopup" />
+        </van-cell-group>
+    </view>
+    <view class="consultButton">
+        <van-row>
+            <van-col span="13" offset="10">
+                <van-button icon="friends-o" plain hairline type="primary" bindtap="consultPage">
+                    点我去线上咨询
+                </van-button>
+            </van-col>
+        </van-row>
+    </view>
+    <view class="confirmButton">
+        <van-row>
+            <van-col span="10" offset="8">
+                <van-button round type="info" bindtap="confirmOrder">确认预约</van-button>
+            </van-col>
+        </van-row>
+    </view>
+</view>
+
+
+
+<!-- 时间选择器 -->
+<van-action-sheet show="{{ showTime }}" bind:close="onCloseTimePopup">
+    <van-datetime-picker type="datetime" value="{{ currentDate }}" min-date="{{ minDate }}" max-date="{{ maxDate }}" bind:cancel="onCancelTimePopup" bind:confirm="onConfirmTime" />
+</van-action-sheet>
+<!-- 老师选择器 -->
+<van-action-sheet show="{{ showTeacher }}">
+    <van-picker show-toolbar columns="{{ columnsTeacher }}" default-index="{{ 1 }}" bind:cancel="onCancelTeacher" bind:confirm="onConfirmTeacher" />
+</van-action-sheet>
+<!-- 地点选择器 -->
+<van-action-sheet show="{{ showLocation }}">
+    <van-picker show-toolbar columns="{{ columnsLocation }}" default-index="{{ 1 }}" bind:cancel="onCancelLocation" bind:confirm="onConfirmLocation" />
+</van-action-sheet>
